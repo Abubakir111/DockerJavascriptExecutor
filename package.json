@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-executor",
+  "version": "1.0.0",
+  "description": "Node.js executor for running JavaScript code",
+  "main": "app/mmserver.js",
+  "scripts": {
+    "start": "node app/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC"
+}
