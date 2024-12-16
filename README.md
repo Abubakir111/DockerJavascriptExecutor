@@ -20,8 +20,8 @@ This project provides a REST API to execute JavaScript code dynamically. It is b
    Clone the project repository from GitHub to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/your-repository-name.git
-   cd your-repository-name
+    git clone git@github.com:Abubakir111/DockerJavascriptExecutor.git.
+   cd DockerJavascriptExecutor
    ```
 
 2. **Install Dependencies**  
@@ -34,7 +34,7 @@ This project provides a REST API to execute JavaScript code dynamically. It is b
 3. **Run the Application Locally (Without Docker)**  
    Start the server:
    ```bash
-   node app/server.js
+   node server.js
    ```
    The application will be available at `http://localhost:5000/execute`.
 
