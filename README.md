@@ -20,7 +20,7 @@ This project provides a REST API to execute JavaScript code dynamically. It is b
    Clone the project repository from GitHub to your local machine:
 
    ```bash
-    git clone git@github.com:Abubakir111/DockerJavascriptExecutor.git.
+    git clone git@github.com:Abubakir111/DockerJavascriptExecutor.git
    cd DockerJavascriptExecutor
    ```
 
@@ -46,7 +46,7 @@ This project provides a REST API to execute JavaScript code dynamically. It is b
    Clone the project repository from GitHub to your local machine:
 
    ```bash
-   git clone git@github.com:Abubakir111/DockerJavascriptExecutor.git.
+   git clone git@github.com:Abubakir111/DockerJavascriptExecutor.git
    cd DockerJavascriptExecutor
    ```
 
