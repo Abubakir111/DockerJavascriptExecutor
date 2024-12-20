@@ -1,12 +1,11 @@
 import express from 'express';
-import { exec } from 'child_process';
 import cors from 'cors';
+import vm from 'vm'; // Для выполнения кода
 
 const app = express();
-// Разрешаем запросы от всех источников
-app.use(cors());
 const port = 5000;
 
+app.use(cors());
 app.use(express.json());
 
 app.post('/execute-js', (req, res) => {
@@ -16,12 +15,41 @@ app.post('/execute-js', (req, res) => {
     return res.status(400).json({ error: 'No code provided' });
   }
 
-  exec(`node -e "${code}"`, (err, stdout, stderr) => {
-    if (err) {
-      return res.status(500).json({ error: stderr || err.message });
+  try {
+    // Массив для перехвата вывода консоли
+    let consoleOutput = [];
+
+    // Переопределяем console.log
+    const customConsole = {
+      log: (...args) => {
+        consoleOutput.push(...args); // Сохраняем все аргументы
+      }
+    };
+
+    // Динамический объект `data`
+    const contextData = {};
+
+    // Контекст выполнения
+    const context = vm.createContext({
+      console: customConsole,
+      data: contextData
+    });
+
+    let result;
+    try {
+      result = vm.runInContext(code, context);
+    } catch (executionError) {
+      // Если ошибка при выполнении кода
+      return res.status(400).json({
+        error: `Execution Error: ${executionError.message}`,
+        stack: executionError.stack // Детали стека ошибки (строка и позиция)
+      });
     }
-    res.json({ result: stdout });
-  });
+
+    res.json({ consoleOutput, result }); // Возвращаем вывод консоли и результат
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
 app.listen(port, () => {

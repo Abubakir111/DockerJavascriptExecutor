@@ -1,10 +1,11 @@
 {
   "name": "nodejs-executor",
   "version": "1.0.0",
+  "type": "module",
   "description": "Node.js executor for running JavaScript code",
-  "main": "app/mmserver.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app/server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
